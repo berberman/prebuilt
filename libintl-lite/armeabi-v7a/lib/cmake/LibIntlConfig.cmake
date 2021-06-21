@@ -25,4 +25,8 @@ endmacro()
 ####################################################################################
 
 include("${CMAKE_CURRENT_LIST_DIR}/LibIntlTargets.cmake")
+
+set_and_check(LibIntl_INCLUDE_DIR "${PACKAGE_PREFIX_DIR}/include")
+set_and_check(LibIntl_LIBRARY "${PACKAGE_PREFIX_DIR}/lib/libintl.a")
+
 check_required_components(LibIntl)
