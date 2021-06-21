@@ -42,7 +42,8 @@ unset(_expectedTargets)
 
 
 # The installation prefix configured by this project.
-set(_IMPORT_PREFIX "/dev/shm/libevent/out/libevent/armeabi-v7a")
+get_filename_component(LIBEVENT_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+get_filename_component(_IMPORT_PREFIX "${LIBEVENT_CMAKE_DIR}/../../.." ABSOLUTE)
 
 # Create imported target libevent::core
 add_library(libevent::core STATIC IMPORTED)
