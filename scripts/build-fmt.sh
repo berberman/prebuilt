@@ -7,12 +7,16 @@ build_fmt() {
     "$CMAKE" -B build \
         -DCMAKE_TOOLCHAIN_FILE="$ANDROID_NDK_ROOT"/build/cmake/android.toolchain.cmake \
         -DANDROID_ABI="$1" \
-        -DANDROID_NATIVE_API_LEVEL=21 \
+        -DANDROID_PLATFORM="$ANDROID_PLATFORM" \
+        -DANDROID_STL=c++_shared \
         -DCMAKE_INSTALL_PREFIX=out/fmt/"$1" \
+        -DCMAKE_CXX_FLAGS="-std=c++17" \
         -DFMT_TEST=OFF \
+        -DFMT_DOC=OFF \
         .
     "$CMAKE" --build build
     "$CMAKE" --build build --target install
+    rm -rf ./build
 }
 
 if [ -z "${ANDROID_SDK_ROOT}" ]; then
