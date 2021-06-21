@@ -28,13 +28,25 @@ ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/23.0.7421159 \
 ANDROID_SDK_CMAKE_VERSION=3.18.1 \
 ANDROID_PLATFORM=21 \
 ANDROID_ABI=arm64-v8a,armeabi-v7a \
-./build-fmt-android.sh
+./build-fmt.sh
+```
+
+## libevent
+
+Upstream repo: [libevent/libevent](https://github.com/libevent/libevent/tree/release-2.1.12-stable)
+
+
+```bash
+ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/23.0.7421159 \
+ANDROID_SDK_CMAKE_VERSION=3.18.1 \
+ANDROID_PLATFORM=21 \
+ANDROID_ABI=arm64-v8a,armeabi-v7a \
+./build-libevent.sh
 ```
 
 ## libintl-lite
 
 Upstream repo (forked): [rocka/libintl-lite](https://github.com/rocka/libintl-lite/tree/feature/cmake-package-config)
-
 
 ```bash
 ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/23.0.7421159 \
