@@ -5,12 +5,12 @@ Built with Android NDK 23.0.7421159, `ANDROID_PLATFORM` aka `ANDROID_NATIVE_API_
 
 ## boost
 
-Upstream repo (forked): [rocka/Boost-for-Android](https://github.com/rocka/Boost-for-Android/tree/ndk23-boost1.74.0)
+Upstream repo (forked): [rocka/Boost-for-Android](https://github.com/rocka/Boost-for-Android)
 
 ```bash
 ./build-android.sh \
 --with-libraries=filesystem,iostreams,regex \
---arch=armebi-v7a,arm64-v8a \
+--arch=armeabi-v7a,arm64-v8a \
 --layout="" \
 $ANDROID_SDK_ROOT/ndk/23.0.7421159
 ```
@@ -47,7 +47,7 @@ ANDROID_ABI=arm64-v8a,armeabi-v7a \
 
 ## libintl-lite
 
-Upstream repo (forked): [rocka/libintl-lite](https://github.com/rocka/libintl-lite/tree/feature/cmake-package-config)
+Upstream repo (forked): [rocka/libintl-lite](https://github.com/rocka/libintl-lite)
 
 ```bash
 ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/23.0.7421159 \
