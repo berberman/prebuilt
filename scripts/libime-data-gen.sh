@@ -4,7 +4,7 @@
 
 set -euxo pipefail
 
-OUT_DIR="./libime"
+OUT_DIR="./libime-data"
 if [ -f "$OUT_DIR" ]; then
     echo "$OUT_DIR is a file"
     exit 1
@@ -36,9 +36,9 @@ python ./convert_open_gram_arpa.py ./lm_sc.3gm.arpa > "$OPENGRAM_LM_SRC"
 libime_slm_build_binary -s -a 22 -q 8 trie "$OPENGRAM_LM_SRC" "$OPENGRAM_LM_OUTPUT"
 libime_prediction "$OPENGRAM_LM_OUTPUT" "$OPENGRAM_LM_SRC" "$OPENGRAM_LM_PREDICT_OUTPUT"
 
-OPENGRAM_DICT_TAR="dict.utf8-20210402.tar.xz"
+OPENGRAM_DICT_TAR="dict.utf8-20211021.tar.xz"
 OPENGRAM_DICT_URL="https://download.fcitx-im.org/data/$OPENGRAM_DICT_TAR"
-OPENGRAM_DICT_HASH="818cfbb5a99ae5b40c2707b6158734f4a10196444853400cbd6b14505592d80d"
+OPENGRAM_DICT_HASH="300597e6f7f79f788480fd665de8a07bfe90227048b5a7e39f40f43a62a981df"
 
 curl -LO "$OPENGRAM_DICT_URL"
 echo "$OPENGRAM_DICT_HASH $OPENGRAM_DICT_TAR" | sha256sum --check --status
