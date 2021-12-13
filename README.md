@@ -5,7 +5,7 @@ Built with Android NDK 23.0.7421159, `ANDROID_PLATFORM` aka `ANDROID_NATIVE_API_
 
 ## boost
 
-Upstream repo (forked): [rocka/Boost-for-Android](https://github.com/rocka/Boost-for-Android)
+Upstream repo: [moritz-wundke/Boost-for-Android](https://github.com/moritz-wundke/Boost-for-Android)
 
 ```bash
 ./build-android.sh \
@@ -57,7 +57,7 @@ ANDROID_ABI=arm64-v8a,armeabi-v7a \
 ./build-android-cmake.sh
 ```
 
-## libime-data
+## libime
 
 Upstream repo: [fcitx/libime](https://github.com/fcitx/libime)
 
@@ -67,4 +67,16 @@ Build dependencies: [python3](https://archlinux.org/packages/extra/x86_64/python
 
 ```bash
 ./libime-data-gen.sh
+```
+
+## spell-dict
+
+Upstream repo: [fcitx/fcitx5](https://github.com/fcitx/fcitx5/blob/master/src/modules/spell/dict)
+
+Build script: [./scripts/spell-dict-gen.sh](./scripts/spell-dict-gen.sh)
+
+Build dependencies: [fcitx5](https://archlinux.org/packages/community/x86_64/fcitx5/)
+
+```bash
+./spell-dict-gen.sh
 ```
