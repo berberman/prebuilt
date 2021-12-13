@@ -4,7 +4,7 @@
 
 set -euxo pipefail
 
-OUT_DIR="./libime-data"
+OUT_DIR="./libime"
 if [ -f "$OUT_DIR" ]; then
     echo "$OUT_DIR is a file"
     exit 1
@@ -12,7 +12,8 @@ fi
 if [ -d "$OUT_DIR" ]; then
     rm -r "$OUT_DIR"
 fi
-mkdir -p "$OUT_DIR"
+mkdir -p "$OUT_DIR/data"
+mkdir -p "$OUT_DIR/table"
 
 LIBIME_REPO="https://raw.githubusercontent.com/fcitx/libime"
 LIBIME_TAG="1.0.7"
@@ -29,8 +30,8 @@ echo "$OPENGRAM_LM_HASH $OPENGRAM_LM_TAR" | sha256sum --check --status
 tar xf "$OPENGRAM_LM_TAR"
 
 OPENGRAM_LM_SRC="./kenlm_sc.arpa"
-OPENGRAM_LM_OUTPUT="$OUT_DIR/zh_CN.lm"
-OPENGRAM_LM_PREDICT_OUTPUT="$OUT_DIR/zh_CN.lm.predict"
+OPENGRAM_LM_OUTPUT="$OUT_DIR/data/zh_CN.lm"
+OPENGRAM_LM_PREDICT_OUTPUT="$OUT_DIR/data/zh_CN.lm.predict"
 
 python ./convert_open_gram_arpa.py ./lm_sc.3gm.arpa > "$OPENGRAM_LM_SRC"
 libime_slm_build_binary -s -a 22 -q 8 trie "$OPENGRAM_LM_SRC" "$OPENGRAM_LM_OUTPUT"
@@ -45,7 +46,7 @@ echo "$OPENGRAM_DICT_HASH $OPENGRAM_DICT_TAR" | sha256sum --check --status
 tar xf "$OPENGRAM_DICT_TAR"
 
 OPENGRAM_DICT_SRC="./dict.converted"
-OPENGRAM_DICT_OUTPUT="$OUT_DIR/sc.dict"
+OPENGRAM_DICT_OUTPUT="$OUT_DIR/data/sc.dict"
 
 python ./convert_open_gram_dict.py ./dict.utf8 > "$OPENGRAM_DICT_SRC"
 libime_pinyindict "$OPENGRAM_DICT_SRC" "$OPENGRAM_DICT_OUTPUT"
@@ -61,5 +62,5 @@ tar xf "$TABLE_DICT_TAR"
 
 for TABLE_TXT_FILE in "${TABLE_TXT_FILES[@]}"; do
     TABLE_DICT_FILE="${TABLE_TXT_FILE/.txt/.main.dict}"
-    libime_tabledict "$TABLE_TXT_FILE" "$OUT_DIR/$TABLE_DICT_FILE"
+    libime_tabledict "$TABLE_TXT_FILE" "$OUT_DIR/table/$TABLE_DICT_FILE"
 done
