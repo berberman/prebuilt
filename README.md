@@ -1,7 +1,7 @@
 # fcitx5-android-prebuilt-libs
 
 Prebuit static libraries for [fcitx5-android-poc](https://github.com/rocka/fcitx5-android-poc).
-Built with Android NDK 23.0.7421159, `ANDROID_PLATFORM` aka `ANDROID_NATIVE_API_LEVEL` 21.
+Built with Android NDK 23.1.7779620, `ANDROID_PLATFORM` (aka `ANDROID_NATIVE_API_LEVEL`) 23.
 
 ## boost
 
@@ -9,10 +9,12 @@ Upstream repo: [moritz-wundke/Boost-for-Android](https://github.com/moritz-wundk
 
 ```bash
 ./build-android.sh \
+--boost=1.78.0 \
 --with-libraries=filesystem,iostreams,regex \
---arch=armeabi-v7a,arm64-v8a \
+--arch=armeabi-v7a,arm64-v8a,x86,x86_64 \
+--target-version=23 \
 --layout="" \
-$ANDROID_SDK_ROOT/ndk/23.0.7421159
+$ANDROID_SDK_ROOT/ndk/23.1.7779620
 ```
 
 **Note:** In order to reduce repo size, boost headers are extracted to [boost/include](./boost/include), and symlinked to separated ABI targets.
@@ -24,10 +26,10 @@ Upstream repo: [fmtlib/fmt](https://github.com/fmtlib/fmt)
 Build script: [./scripts/build-fmt.sh](./scripts/build-fmt.sh)
 
 ```bash
-ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/23.0.7421159 \
+ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/23.1.7779620 \
 ANDROID_SDK_CMAKE_VERSION=3.18.1 \
-ANDROID_PLATFORM=21 \
-ANDROID_ABI=arm64-v8a,armeabi-v7a \
+ANDROID_PLATFORM=23 \
+ANDROID_ABI=armeabi-v7a,arm64-v8a,x86,x86_64 \
 ./build-fmt.sh
 ```
 
@@ -38,22 +40,22 @@ Upstream repo: [libevent/libevent](https://github.com/libevent/libevent/tree/rel
 Build script: [./scripts/build-libevent.sh](./scripts/build-libevent.sh)
 
 ```bash
-ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/23.0.7421159 \
+ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/23.1.7779620 \
 ANDROID_SDK_CMAKE_VERSION=3.18.1 \
-ANDROID_PLATFORM=21 \
-ANDROID_ABI=arm64-v8a,armeabi-v7a \
+ANDROID_PLATFORM=23 \
+ANDROID_ABI=armeabi-v7a,arm64-v8a,x86,x86_64 \
 ./build-libevent.sh
 ```
 
 ## libintl-lite
 
-Upstream repo (forked): [rocka/libintl-lite](https://github.com/rocka/libintl-lite)
+Upstream repo: [j-jorge/libintl-lite](https://github.com/j-jorge/libintl-lite)
 
 ```bash
-ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/23.0.7421159 \
+ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/23.1.7779620 \
 ANDROID_SDK_CMAKE_VERSION=3.18.1 \
-ANDROID_PLATFORM=21 \
-ANDROID_ABI=arm64-v8a,armeabi-v7a \
+ANDROID_PLATFORM=23 \
+ANDROID_ABI=armeabi-v7a,arm64-v8a,x86,x86_64 \
 ./build-android-cmake.sh
 ```
 
