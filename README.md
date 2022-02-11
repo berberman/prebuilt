@@ -71,6 +71,20 @@ Build dependencies: [python3](https://archlinux.org/packages/extra/x86_64/python
 ./libime-data-gen.sh
 ```
 
+## lua
+
+Upstream repo (forked): [rocka/LuaCMake](https://github.com/rocka/LuaCMake)
+
+Build script: [./scripts/build-lua.sh](./scripts/build-lua.sh)
+
+```bash
+ANDROID_NDK_ROOT=$ANDROID_SDK_ROOT/ndk/23.1.7779620 \
+ANDROID_SDK_CMAKE_VERSION=3.18.1 \
+ANDROID_PLATFORM=23 \
+ANDROID_ABI=armeabi-v7a,arm64-v8a,x86,x86_64 \
+./build-lua.sh
+```
+
 ## spell-dict
 
 Upstream repo: [fcitx/fcitx5](https://github.com/fcitx/fcitx5/blob/master/src/modules/spell/dict)
